@@ -3,238 +3,275 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Aruthra — Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg-1:#E6F5FF;
-      --bg-2:#EDF5FF;
-      --neon:#A7C8E8;
-      --accent:#D7E6F5;
-      --muted:#42515b;
-      --card:#ffffff;
-      --glass: rgba(255,255,255,0.6);
-      --focus: #2b6ba3;
-      --max-width:1200px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;color:var(--muted);background:linear-gradient(180deg,var(--bg-1),var(--bg-2));-webkit-font-smoothing:antialiased}
-    a{color:inherit;text-decoration:none}
+  <title>Aruthra — Portfolio (recreated)</title>
 
-    /* Header */
-    header{background:transparent;padding:20px 16px;position:sticky;top:0;backdrop-filter:blur(6px);z-index:50}
-    .nav{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .logo-slot{display:flex;align-items:center;gap:12px}
-    .logo-placeholder{width:56px;height:56px;border-radius:10px;background:linear-gradient(180deg,var(--card),rgba(255,255,255,0.9));display:flex;align-items:center;justify-content:center;border:1px solid rgba(66,81,91,0.06);overflow:hidden}
-    .brand-text{font-family:'Playfair Display',serif;font-weight:700;color:var(--muted);font-size:18px}
-    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;align-items:center}
-    nav li{font-weight:600;color:var(--muted);font-size:14px}
-    .cta{padding:8px 14px;border-radius:8px;background:var(--focus);color:white;font-weight:700;border:none;cursor:pointer}
+  <!-- Google fonts (serif headline + modern sans body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    /* Container */
-    .container{max-width:var(--max-width);margin:36px auto;padding:0 20px}
-
-    /* Hero professional layout */
-    .hero{display:grid;grid-template-columns:1fr 380px;gap:32px;align-items:center;margin-top:18px}
-    .intro{background:transparent;padding:6px}
-    .eyebrow{font-size:13px;color:var(--focus);font-weight:700;letter-spacing:0.6px}
-    h1{font-family:'Playfair Display',serif;font-size:48px;line-height:1.02;margin:12px 0;color:#102028}
-    .role{font-weight:600;color:var(--muted);margin-bottom:18px}
-    .lead{font-size:16px;color:var(--muted);max-width:680px;line-height:1.6}
-    .hero-actions{margin-top:20px;display:flex;gap:12px}
-    .btn-primary{background:var(--focus);color:white;padding:12px 18px;border-radius:10px;border:none;font-weight:700;cursor:pointer}
-    .btn-secondary{background:transparent;border:1px solid rgba(16,32,40,0.06);padding:10px 16px;border-radius:10px}
-
-    /* Right profile card */
-    .profile-card{background:var(--card);border-radius:12px;padding:20px;border:1px solid rgba(66,81,91,0.06);box-shadow:0 10px 30px rgba(16,32,40,0.04)}
-    .avatar{width:100%;height:320px;border-radius:8px;background-size:cover;background-position:center;margin-bottom:14px}
-    .profile-meta{display:flex;flex-direction:column;gap:6px}
-    .name{font-weight:700;color:#0f2430}
-    .meta{color:var(--muted);font-size:13px}
-
-    /* Projects */
-    .section{margin-top:44px}
-    .section h2{font-family:'Playfair Display',serif;font-size:26px;margin:0 0 14px;color:#0f2430}
-    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .project{background:var(--card);border-radius:10px;padding:14px;border:1px solid rgba(16,32,40,0.04);transition:transform .28s ease, box-shadow .28s ease}
-    .project:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(16,32,40,0.06)}
-    .project img{width:100%;height:160px;object-fit:cover;border-radius:8px}
-    .project h3{margin:12px 0 6px;font-size:16px;color:#0f2430}
-    .project p{margin:0;color:var(--muted);font-size:14px}
-
-    /* Case studies list */
-    .case-list{display:flex;flex-direction:column;gap:14px;margin-top:18px}
-    .case{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.95));border-radius:10px;padding:14px;border:1px solid rgba(16,32,40,0.04)}
-    .case .left{flex:0 0 120px}
-    .case .left img{width:120px;height:80px;object-fit:cover;border-radius:6px}
-    .case .right{flex:1}
-    .case h4{margin:0 0 6px;color:#0f2430}
-    .case p{margin:0;color:var(--muted);font-size:14px}
-
-    /* About and contact */
-    .two-col{display:grid;grid-template-columns:1fr 360px;gap:24px;margin-top:28px}
-    .about p{color:var(--muted);line-height:1.6}
-    .contact-card{background:linear-gradient(180deg,rgba(230,245,255,0.8),rgba(237,245,255,0.9));padding:18px;border-radius:10px;border:1px solid rgba(16,32,40,0.04)}
-    .contact-form{display:grid;grid-template-columns:1fr;gap:10px}
-    .input,textarea{padding:12px;border-radius:8px;border:1px solid rgba(16,32,40,0.06);outline:none}
-    textarea{min-height:120px}
-
-    footer{margin-top:40px;padding:24px 0;color:var(--muted);font-size:14px}
-
-    /* responsive */
-    @media (max-width:980px){.hero{grid-template-columns:1fr;gap:20px}.projects-grid{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}.logo-placeholder{width:48px;height:48px}}
-    @media (max-width:640px){.projects-grid{grid-template-columns:1fr}h1{font-size:34px}}
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="nav">
-      <div class="logo-slot">
-        <div class="logo-placeholder" id="logoSlot">
-          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='46' height='46'><rect rx='8' ry='8' width='46' height='46' fill='%23A7C8E8'/><text x='50%' y='54%' font-size='20' text-anchor='middle' fill='%230f2430' font-family='Arial' font-weight='700'>A</text></svg>" alt="logo">
-        </div>
-        <div>
-          <div class="brand-text">Aruthra</div>
-          <div style="font-size:12px;color:var(--muted)">Designer and Front End</div>
-        </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <!-- small logo placeholder — replace with your real svg/png -->
+        <img src="/mnt/data/cc229dc5-d026-4702-814a-c683172eb779.png" alt="logo" class="logo">
       </div>
 
-      <nav>
-        <ul>
-          <li><a href="#work">Work</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><button class="cta" onclick="location.href='#work'">View Work</button></li>
-        </ul>
+      <nav class="main-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
       </nav>
+
+      <a href="#contact" class="btn primary small">Hire Me</a>
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <div class="intro">
-        <div class="eyebrow">UI UX Designer and Front End</div>
-        <h1>Hi I’m Aruthra</h1>
-        <div class="role">Designer and Front End Developer</div>
-        <p class="lead">I create clear purposeful interfaces informed by research and built with production ready front end. My process values accessibility measurable outcomes and elegant details.</p>
-        <div class="hero-actions">
-          <button class="btn-primary" onclick="location.href='#work'">Explore Work</button>
-          <button class="btn-secondary" onclick="location.href='#contact'">Get in Touch</button>
-        </div>
-      </div>
+  <!-- left vertical socials -->
+  <aside class="socials" aria-hidden="true">
+    <ul>
+      <li><span class="icon">in</span></li>
+      <li><span class="icon">ig</span></li>
+      <li><span class="icon">dr</span></li>
+      <li><span class="icon">be</span></li>
+    </ul>
+  </aside>
 
-      <aside class="profile-card">
-        <div class="avatar" style="background-image:url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder');"></div>
-        <div class="profile-meta">
-          <div class="name">Aruthra Vimala K L</div>
-          <div class="meta">UI UX Designer and Front End Developer · Chennai</div>
-          <div style="margin-top:6px;color:var(--muted);font-size:13px">Available for internships and freelance. Focused on product design systems and interaction design.</div>
-        </div>
-      </aside>
-    </section>
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <h1 class="hero-title">Hey! I'm Aruthra<br><span class="sub">Designer &amp;</span><br>Developer</h1>
 
-    <section id="work" class="section">
-      <h2>Selected Projects</h2>
-      <div class="projects-grid">
-        <article class="project">
-          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1" alt="project">
-          <h3>E commerce redesign</h3>
-          <p>Improved conversion and accessibility through a simplified checkout and responsive design system.</p>
-        </article>
+          <p class="hero-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus luctusnec ullamcorper mattis, pulvinar dapibus leo.</p>
 
-        <article class="project">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=2" alt="project">
-          <h3>Learning platform</h3>
-          <p>Redesigned onboarding and content flow to increase engagement and course completion rates.</p>
-        </article>
-
-        <article class="project">
-          <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3" alt="project">
-          <h3>Micro interactions study</h3>
-          <p>Exploration of motion patterns and micro interactions to improve perceived performance and delight.</p>
-        </article>
-      </div>
-
-      <div class="case-list">
-        <div class="case">
-          <div class="left"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=4" alt="case"></div>
-          <div class="right">
-            <h4>Case Study — E commerce redesign</h4>
-            <p>Context Problem Process Solution Outcome summarized in a concise case study. Click to view full case study with process artifacts and metrics.</p>
+          <div class="hero-ctas">
+            <a href="#about" class="btn primary">Learn more</a>
+            <a href="#portfolio" class="btn ghost">Portfolio</a>
           </div>
         </div>
 
-        <div class="case">
-          <div class="left"><img src="https://images.unsplash.com/photo-1520975916271-2f3cddf1c9f3?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=5" alt="case"></div>
-          <div class="right">
-            <h4>Case Study — Learning product</h4>
-            <p>Brief summary including the measurable outcome. Expand into a full case if you'd like.</p>
+        <div class="hero-right">
+          <!-- framed portrait with blue offset like screenshots -->
+          <div class="portrait-frame">
+            <div class="frame-offset"></div>
+            <img class="portrait" src="/mnt/data/ff5b69aa-0796-4fbb-875e-fe4bc1f8b832.png" alt="Portrait">
           </div>
         </div>
       </div>
     </section>
 
-    <section id="about" class="two-col">
-      <div>
-        <h2>About</h2>
-        <p>I am a product focused designer who codes. I combine user research visual design and front end engineering to deliver usable polished products. Outside of design I run podcasts and lead creative projects focused on community and education.</p>
-
-        <h3 style="margin-top:18px">Process</h3>
-        <p style="color:var(--muted)">Research Define Ideate Prototype Test Iterate — I document decisions and measure impact. I prefer simple workflows and reusable systems that scale.</p>
+    <!-- ABOUT -->
+    <section id="about" class="section about">
+      <div class="container centered">
+        <h2>About Me</h2>
+        <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <span class="divider"></span>
       </div>
 
-      <aside class="contact-card" id="contact">
-        <strong style="color:#0f2430">Quick details</strong>
-        <ul style="margin:10px 0 0;padding-left:18px;color:var(--muted)">
-          <li>Location Chennai</li>
-          <li>Availability Internships Freelance</li>
-          <li>Tools Figma React HTML CSS Blender</li>
-        </ul>
+      <div class="container about-grid">
+        <div class="about-text">
+          <h3>Developing With a Passion While Exploring The World.</h3>
 
-        <div style="margin-top:12px">
-          <button class="btn-primary" onclick="location.href='#contactForm'">Contact me</button>
+          <div class="about-columns">
+            <div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+
+            <div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </div>
+
+          <a class="btn outline" href="#contact">Contact Me</a>
         </div>
-      </aside>
-    </section>
 
-    <section class="section" id="contactForm">
-      <h2>Contact</h2>
-      <p style="color:var(--muted);margin-bottom:12px">Interested in working together? Send a short message and I’ll reply within a few days.</p>
-      <form onsubmit="handleSubmit(event)" class="contact-form">
-        <input class="input" name="name" placeholder="Your name" required>
-        <input class="input" name="email" placeholder="Email" type="email" required>
-        <textarea name="message" placeholder="Tell me about your project" required></textarea>
-        <div><button class="btn-primary" type="submit">Send Message</button></div>
-      </form>
-    </section>
-
-    <footer>
-      <div style="display:flex;justify-content:space-between;align-items:center;max-width:var(--max-width);margin:0 auto;padding:12px 20px;color:var(--muted)">
-        <div>© <strong>Aruthra</strong> — UI UX & Front End</div>
-        <div style="color:var(--muted)">Built with care · Chennai</div>
+        <div class="about-image">
+          <div class="image-stack">
+            <img src="/mnt/data/7eb75df1-7a31-4ea6-b2a1-e56c57b69295.png" alt="Laptop mock" />
+          </div>
+        </div>
       </div>
-    </footer>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services alt">
+      <div class="container centered">
+        <h2>What Services I'm Providing</h2>
+        <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <span class="divider"></span>
+      </div>
+
+      <div class="container services-grid">
+        <article class="card service">
+          <div class="icon-round">🎨</div>
+          <h4>UI/UX Design</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+          <button class="round-arrow">→</button>
+        </article>
+
+        <article class="card service">
+          <div class="icon-round">📣</div>
+          <h4>Digital Marketing</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+          <button class="round-arrow">→</button>
+        </article>
+
+        <article class="card service">
+          <div class="icon-round">💻</div>
+          <h4>Web Development</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+          <button class="round-arrow">→</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- WORKING PROCESS (video hero) -->
+    <section class="process">
+      <div class="process-hero">
+        <img src="/mnt/data/6334c78f-e307-451f-8326-ad82bbc22a59.png" alt="process" />
+        <div class="process-overlay">
+          <button class="play">▶</button>
+          <h2>Working Process</h2>
+          <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo..</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section experience alt">
+      <div class="container centered">
+        <h2>Work Experience</h2>
+        <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <span class="divider"></span>
+      </div>
+
+      <div class="container exp-grid">
+        <div class="card exp-card">
+          <h4>UI/UX Designer</h4>
+          <a class="date" href="#">2015-2018</a>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+        </div>
+
+        <div class="card exp-card">
+          <h4>Web Designer</h4>
+          <a class="date" href="#">2015-2018</a>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="section portfolio">
+      <div class="container centered">
+        <h2>My Portfolio</h2>
+        <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <span class="divider"></span>
+      </div>
+
+      <div class="container portfolio-grid">
+        <div class="portfolio-item">
+          <img src="/mnt/data/2c1a0377-7f4d-447a-ab4f-71afb8879865.png" alt="project 1">
+        </div>
+        <div class="portfolio-item">
+          <img src="/mnt/data/5ade9fea-61b3-4d41-80c9-6b49406161db.png" alt="project 2">
+        </div>
+        <div class="portfolio-item">
+          <img src="/mnt/data/fc75fe63-667e-4a99-8dc1-b87a25d16810.png" alt="project 3">
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials alt">
+      <div class="container centered">
+        <h2>What My Clients Says</h2>
+        <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <span class="divider"></span>
+      </div>
+
+      <div class="container testimonial-grid">
+        <div class="card testimonial">
+          <div class="quote">“</div>
+          <img class="avatar" src="/mnt/data/a6e26790-6ac3-48f4-a9c8-67624ab3b071.png" alt="person">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+        </div>
+
+        <div class="card testimonial">
+          <div class="quote">“</div>
+          <img class="avatar" src="/mnt/data/887dfd86-d717-4a12-9fb7-8408b816029b.png" alt="person">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+        </div>
+
+        <div class="card testimonial">
+          <div class="quote">“</div>
+          <img class="avatar" src="/mnt/data/ae8c6796-c600-4e98-8fa8-b6cb86cab476.png" alt="person">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <div class="container centered">
+        <h2>Stay In Touch</h2>
+        <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+        <span class="divider"></span>
+      </div>
+
+      <div class="container contact-form">
+        <input type="email" placeholder="Enter email address" id="email" />
+        <button class="btn primary" id="subscribe">Subscribe</button>
+      </div>
+    </section>
+
   </main>
 
-  <script>
-    // Smooth scroll for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        e.preventDefault();
-        const t = document.querySelector(a.getAttribute('href'));
-        if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
-      })
-    })
+  <footer class="deep-footer">
+  <div class="footer-container">
 
-    function handleSubmit(e){
-      e.preventDefault();
-      const data = new FormData(e.target);
-      alert('Thanks ' + data.get('name') + '! I will get back to you soon.');
-      e.target.reset();
-    }
-  </script>
+    <!-- Left Column -->
+    <div class="footer-left">
+      <div class="social-icons">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <!-- Center Column -->
+    <div class="footer-center">
+      <h3>Menu</h3>
+      <div class="footer-blob"></div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="footer-right">
+      <h3>Categories</h3>
+      <ul>
+        <li>Casual</li>
+        <li>Work & Office</li>
+        <li>Activewear</li>
+        <li>Evening Dresses</li>
+      </ul>
+      <p class="footer-mail">mail@example.com</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    Copyright © 2025 stylefwd.com
+  </div>
+</footer>
+
+
+  <script src="script.js"></script>
 </body>
 </html>
